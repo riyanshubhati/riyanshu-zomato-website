@@ -643,6 +643,35 @@
     <footer>
         Copyright &copy; | All rights reserved | Website by Riyansh Bhati
     </footer>
+    <input type="text" id="search" placeholder="Search for food or grocery...">
+
+<div id="items">
+    <div class="item">Pizza</div>
+    <div class="item">Burger</div>
+    <div class="item">Biryani</div>
+    <div class="item">Pasta</div>
+    <div class="item">Milk</div>
+    <div class="item">Bread</div>
+    <div class="item">Apples</div>
+    <div class="item">Rice</div>
+</div>
+
+<script>
+    const search = document.getElementById("search");
+    const items = document.querySelectorAll(".item");
+
+    search.addEventListener("input", function() {
+        let value = search.value.toLowerCase();
+
+        items.forEach(function(item) {
+            if (item.textContent.toLowerCase().includes(value)) {
+                item.style.display = "block";
+            } else {
+                item.style.display = "none";
+            }
+        });
+    });
+</script>
 
     <script src="js/script.js"></script>
 

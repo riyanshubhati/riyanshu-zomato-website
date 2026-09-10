@@ -4,11 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zomato - Order food online</title>
+
+    <title>Riyanshu Zomato</title>
+
     <style>
-        /* =========================
-   RESET
-========================= */
+        /* ---------- BASIC RESET ---------- */
 
         * {
             margin: 0;
@@ -16,664 +16,409 @@
             box-sizing: border-box;
         }
 
-        html {
-            scroll-behavior: smooth;
+        html,
+        body {
+            width: 100%;
+            height: 100%;
         }
 
         body {
             font-family: Arial, Helvetica, sans-serif;
-            background: #fff;
-            color: #222;
+            background: #e23744;
+            overflow: hidden;
         }
 
 
-        /* =========================
-   HEADER
-========================= */
-
-        header {
-            width: 100%;
-            height: 80px;
-
-            position: absolute;
-            top: 0;
-            left: 0;
-
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-
-            padding: 0 8%;
-
-            z-index: 10;
-
-            background: linear-gradient(to bottom,
-                    rgba(0, 0, 0, 0.55),
-                    transparent);
-        }
-
-        /* Logo */
-
-        .logo img {
-            width: 145px;
-            display: block;
-        }
-
-        /* Navigation */
-
-        header ul {
-            display: flex;
-            align-items: center;
-            gap: 35px;
-
-            list-style: none;
-        }
-
-        header ul li a {
-            color: white;
-            text-decoration: none;
-
-            font-size: 16px;
-            font-weight: 500;
-
-            transition: 0.3s ease;
-        }
-
-        header ul li a:hover {
-            color: #ffb3b3;
-        }
-
-
-        /* =========================
-   HERO
-========================= */
+        /* ---------- HERO SECTION ---------- */
 
         .hero {
             position: relative;
 
             width: 100%;
-            height: 680px;
+            height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
 
             overflow: hidden;
 
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            background: #e23744;
         }
 
-        /* Background image */
+
+        /* ---------- BACKGROUND IMAGE ---------- */
 
         .hero-bg {
             position: absolute;
 
-            width: 100%;
-            height: 100%;
-
-            object-fit: cover;
-
             top: 0;
             left: 0;
 
-            z-index: 0;
+            width: 100%;
+            height: 100%;
 
-            transform: scale(1.02);
-
-            filter: brightness(0.65);
-        }
-
-        /* Dark gradient */
-
-        .hero::after {
-            content: "";
-
-            position: absolute;
-
-            inset: 0;
-
-            background:
-                linear-gradient(180deg,
-                    rgba(0, 0, 0, 0.45),
-                    rgba(0, 0, 0, 0.15) 40%,
-                    rgba(0, 0, 0, 0.65));
+            object-fit: contain;
 
             z-index: 1;
+
+            /* Slow background animation */
+            animation: backgroundZoom 10s ease-in-out infinite alternate;
         }
 
 
-        /* =========================
-   HERO CONTENT
-========================= */
+        @keyframes backgroundZoom {
+
+            0% {
+                transform: scale(1);
+            }
+
+            100% {
+                transform: scale(1.08);
+            }
+
+        }
+
+
+        /* ---------- CONTENT ---------- */
 
         .hero-content {
             position: relative;
 
             z-index: 2;
 
-            width: 100%;
-            max-width: 900px;
-
-            padding: 40px;
+            width: 90%;
 
             text-align: center;
 
             color: white;
-
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        /* Small top text */
-
-        .hero-content::before {
-            content: "WELCOME TO ZOMATO";
-
-            font-size: 14px;
-            letter-spacing: 4px;
-            font-weight: bold;
-
-            margin-bottom: 18px;
-
-            opacity: 0.9;
         }
 
 
-        /* Main heading */
+        /* ---------- HEADING ---------- */
 
         .hero-content h1 {
-            font-size: 62px;
-            line-height: 1.05;
+            font-size: 55px;
 
-            max-width: 800px;
-
-            margin-bottom: 22px;
-
-            font-weight: 800;
+            margin-bottom: 15px;
 
             text-shadow:
-                0 5px 25px rgba(0, 0, 0, 0.4);
+                0 2px 8px rgba(0, 0, 0, 0.5);
+
+            animation: headingAnimation 1s ease forwards;
         }
 
 
-        /* Description */
+        @keyframes headingAnimation {
+
+            0% {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        }
+
+
+        /* ---------- PARAGRAPH ---------- */
 
         .hero-content p {
             font-size: 20px;
-            line-height: 1.6;
 
-            max-width: 600px;
+            margin-bottom: 30px;
 
-            margin-bottom: 35px;
+            text-shadow:
+                0 2px 5px rgba(0, 0, 0, 0.5);
 
-            color: rgba(255, 255, 255, 0.9);
+            animation: paragraphAnimation 1.5s ease forwards;
         }
 
 
-        /* =========================
-   SEARCH BOX
-========================= */
+        @keyframes paragraphAnimation {
 
-        .hero-content input {
-            width: 600px;
-            max-width: 90%;
+            0% {
+                opacity: 0;
+            }
 
-            height: 62px;
+            100% {
+                opacity: 1;
+            }
 
-            padding: 0 25px;
+        }
+
+
+        /* ---------- SEARCH BOX ---------- */
+
+        .search-box {
+            display: flex;
+
+            justify-content: center;
+            align-items: center;
+
+            gap: 10px;
+
+            width: 650px;
+
+            max-width: 100%;
+
+            margin: auto;
+
+            animation: searchAnimation 1.5s ease forwards;
+        }
+
+
+        @keyframes searchAnimation {
+
+            0% {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        }
+
+
+        /* ---------- SEARCH INPUT ---------- */
+
+        .search-box input {
+            width: 100%;
+
+            height: 60px;
+
+            padding: 0 22px;
 
             border: none;
-            border-radius: 14px;
 
             outline: none;
 
-            background: rgba(255, 255, 255, 0.97);
+            border-radius: 12px;
+
+            background: white;
 
             color: #222;
 
             font-size: 17px;
 
-            box-shadow:
-                0 15px 40px rgba(0, 0, 0, 0.25);
-
-            transition: 0.3s ease;
+            transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease;
         }
 
-        .hero-content input::placeholder {
-            color: #777;
-        }
 
-        .hero-content input:focus {
-            transform: translateY(-3px);
+        /* Input focus animation */
+
+        .search-box input:focus {
+            transform: scale(1.02);
 
             box-shadow:
-                0 20px 50px rgba(0, 0, 0, 0.35);
+                0 0 20px rgba(255, 255, 255, 0.8);
         }
 
 
-        /* =========================
-   FOOTER
-========================= */
+        /* ---------- SEARCH BUTTON ---------- */
 
-        footer {
-            height: 80px;
+        .search-box button {
+            height: 60px;
 
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            padding: 0 28px;
 
-            background: #181818;
+            border: none;
 
-            color: #aaa;
+            border-radius: 12px;
 
-            font-size: 14px;
+            background: #e23744;
 
-            letter-spacing: 0.5px;
+            color: white;
+
+            font-size: 17px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition:
+                transform 0.3s ease,
+                background 0.3s ease,
+                box-shadow 0.3s ease;
         }
 
 
-        /* =========================
-   RESPONSIVE
-========================= */
+        /* Button hover animation */
 
-        @media (max-width: 900px) {
+        .search-box button:hover {
+            transform: scale(1.08);
 
-            header {
-                padding: 0 5%;
-            }
+            background: #c91f2d;
 
-            header ul {
-                gap: 18px;
-            }
-
-            header ul li a {
-                font-size: 14px;
-            }
-
-            .hero-content h1 {
-                font-size: 48px;
-            }
-
-            .hero-content p {
-                font-size: 18px;
-            }
+            box-shadow:
+                0 5px 20px rgba(0, 0, 0, 0.3);
         }
 
+
+        /* Button click animation */
+
+        .search-box button:active {
+            transform: scale(0.95);
+        }
+
+
+        /* ---------- MOBILE RESPONSIVE ---------- */
 
         @media (max-width: 600px) {
 
-            header {
-                height: 70px;
-            }
-
-            .logo img {
-                width: 110px;
-            }
-
-            header ul {
-                gap: 10px;
-            }
-
-            header ul li a {
-                font-size: 11px;
-            }
-
-            .hero {
-                height: 600px;
-            }
-
-            .hero-content {
-                padding: 20px;
-            }
-
-            .hero-content::before {
-                font-size: 11px;
-                letter-spacing: 3px;
-            }
-
             .hero-content h1 {
-                font-size: 38px;
+                font-size: 35px;
             }
 
             .hero-content p {
                 font-size: 16px;
             }
 
-            .hero-content input {
-                height: 55px;
-                font-size: 14px;
-                border-radius: 10px;
+            .search-box {
+                flex-direction: column;
             }
 
-            footer {
-                height: 65px;
-                font-size: 12px;
-            }
-        }
-
-        /* =========================
-   ANIMATIONS
-========================= */
-
-        /* Header comes down */
-
-        header {
-            animation: headerDown 1s ease forwards;
-        }
-
-        @keyframes headerDown {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
+            .search-box input {
+                width: 100%;
             }
 
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-
-        /* Logo floating */
-
-        .logo img {
-            animation: logoFloat 3s ease-in-out infinite;
-        }
-
-        @keyframes logoFloat {
-            0% {
-                transform: translateY(0);
+            .search-box button {
+                width: 100%;
             }
 
-            50% {
-                transform: translateY(-5px);
-            }
-
-            100% {
-                transform: translateY(0);
-            }
         }
 
-
-        /* Navigation links */
-
-        header ul li {
-            opacity: 0;
-            animation: navAppear 0.7s ease forwards;
-        }
-
-        header ul li:nth-child(1) {
-            animation-delay: 0.2s;
-        }
-
-        header ul li:nth-child(2) {
-            animation-delay: 0.35s;
-        }
-
-        header ul li:nth-child(3) {
-            animation-delay: 0.5s;
-        }
-
-        header ul li:nth-child(4) {
-            animation-delay: 0.65s;
-        }
-
-        @keyframes navAppear {
-            from {
-                opacity: 0;
-                transform: translateY(-15px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-
-        /* Background zoom */
-
-        .hero-bg {
-            animation: backgroundZoom 10s ease-in-out infinite alternate;
-        }
-
-        @keyframes backgroundZoom {
-            from {
-                transform: scale(1);
-            }
-
-            to {
-                transform: scale(1.08);
-            }
-        }
-
-
-        /* Hero heading */
-
-        .hero-content h1 {
-            opacity: 0;
-            animation: headingAppear 1s ease 0.4s forwards;
-        }
-
-        @keyframes headingAppear {
-            from {
-                opacity: 0;
-                transform: translateY(40px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-
-        /* Welcome text */
-
-        .hero-content::before {
-            opacity: 0;
-            animation: welcomeAppear 1s ease 0.2s forwards;
-        }
-
-        @keyframes welcomeAppear {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-                letter-spacing: 10px;
-            }
-
-            to {
-                opacity: 0.9;
-                transform: translateY(0);
-                letter-spacing: 4px;
-            }
-        }
-
-
-        /* Description */
-
-        .hero-content p {
-            opacity: 0;
-            animation: textAppear 1s ease 0.7s forwards;
-        }
-
-        @keyframes textAppear {
-            from {
-                opacity: 0;
-                transform: translateY(25px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-
-        /* Search box */
-
-        .hero-content input {
-            opacity: 0;
-            animation:
-                searchAppear 1s ease 1s forwards,
-                searchGlow 3s ease-in-out 2s infinite;
-        }
-
-        @keyframes searchAppear {
-            from {
-                opacity: 0;
-                transform: translateY(30px) scale(0.95);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-        }
-
-
-        /* Search box glow */
-
-        @keyframes searchGlow {
-            0% {
-                box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
-            }
-
-            50% {
-                box-shadow: 0 15px 45px rgba(255, 255, 255, 0.35);
-            }
-
-            100% {
-                box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
-            }
-        }
-
-
-        /* Search hover */
-
-        .hero-content input:hover {
-            transform: scale(1.02);
-        }
-
-
-        /* Navigation hover */
-
-        header ul li a {
-            position: relative;
-        }
-
-        header ul li a::after {
-            content: "";
-
-            position: absolute;
-
-            width: 0;
-            height: 2px;
-
-            bottom: -7px;
-            left: 50%;
-
-            background: white;
-
-            transition: all 0.3s ease;
-        }
-
-        header ul li a:hover::after {
-            width: 100%;
-            left: 0;
-        }
-
-
-        /* Footer */
-
-        footer {
-            animation: footerAppear 1s ease forwards;
-        }
-
-        @keyframes footerAppear {
-            from {
-                opacity: 0;
-            }
-
-            to {
-                opacity: 1;
-            }
-        }
     </style>
-    <link rel="stylesheet" href="style.css">
 </head>
+
 
 <body>
 
-    <header>
-        <div class="logo">
-            <a href="#">Riyanshu Zomato</a>
+
+    <!-- ================= HERO ================= -->
+
+    <section class="hero">
+
+
+        <!-- BACKGROUND IMAGE -->
+
+        <img
+            class="hero-bg"
+            src="rubaitul-azad-N0gLp-w6zF4-unsplash.jpg"
+            alt="Zomato Background"
+        >
+
+
+        <!-- ================= CONTENT ================= -->
+
+        <div class="hero-content">
+
+
+            <!-- HEADING -->
+
+            <h1>
+                Welcome to my website
+            </h1>
+
+
+            <!-- DESCRIPTION -->
+
+            <p>
+                Hi, I'm Riyanshu Bhati — Developer, Learner & Creator.
+            </p>
+
+
+            <!-- ================= SEARCH ================= -->
+
+            <div class="search-box">
+
+
+                <input
+                    type="text"
+                    id="search"
+                    placeholder="Search for food, restaurants or grocery"
+                >
+
+
+                <button onclick="searchZomato()">
+                    Search
+                </button>
+
+
+            </div>
+
+
         </div>
 
-        <ul>
-            <li><a href="#">Investor Relations</a></li>
-            <li><a href="#">Add Restaurant</a></li>
-            <li><a href="login.html">Login</a></li>
-            <li><a href="#">Sign up</a></li>
-        </ul>
-    </header>
 
-    <main>
-        <li><a href="login.html">Login</a></li>
-        <main>
-            <section class="hero">
+    </section>
 
-                <img class="hero-bg" src="rubaitul-azad-N0gLp-w6zF4-unsplash.jpg" alt="Background">
 
-                <div class="hero-content">
+    <!-- ================= JAVASCRIPT ================= -->
 
-                    <h1>Welcome to my website</h1>
+    <script>
 
-                    <p>
-                        Hi, I'm Riyanshu Bhati — Developer, Learner & Creator.
-                    </p>
 
-                    <input type="text" placeholder="What do you want to explore?">
+        /* ---------- ZOMATO SEARCH ---------- */
 
-                </div>
+        function searchZomato() {
 
-            </section>
-        </main>
-    </main>
+            let item =
+                document.getElementById("search").value.trim();
 
-    <footer>
-        Copyright &copy; | All rights reserved | Website by Riyansh Bhati
-    </footer>
-    <input type="text" id="search" placeholder="Search for food or grocery...">
 
-<div id="items">
-    <div class="item">Pizza</div>
-    <div class="item">Burger</div>
-    <div class="item">Biryani</div>
-    <div class="item">Pasta</div>
-    <div class="item">Milk</div>
-    <div class="item">Bread</div>
-    <div class="item">Apples</div>
-    <div class="item">Rice</div>
-</div>
+            /* Check if search is empty */
 
-<script>
-    const search = document.getElementById("search");
-    const items = document.querySelectorAll(".item");
+            if (item === "") {
 
-    search.addEventListener("input", function() {
-        let value = search.value.toLowerCase();
+                alert("Please enter something to search.");
 
-        items.forEach(function(item) {
-            if (item.textContent.toLowerCase().includes(value)) {
-                item.style.display = "block";
-            } else {
-                item.style.display = "none";
+                return;
             }
-        });
-    });
-</script>
 
-    <script src="js/script.js"></script>
+
+            /* Create Zomato search URL */
+
+            let zomatoURL =
+                "https://www.zomato.com/search?q=" +
+                encodeURIComponent(item);
+
+
+            /* Open Zomato in new tab */
+
+            window.open(
+                zomatoURL,
+                "_blank"
+            );
+
+        }
+
+
+        /* ---------- ENTER KEY SEARCH ---------- */
+
+        document
+            .getElementById("search")
+            .addEventListener("keydown", function (event) {
+
+                if (event.key === "Enter") {
+
+                    searchZomato();
+
+                }
+
+            });
+
+
+    </script>
+
 
 </body>
 
